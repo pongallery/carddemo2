@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainbow Card - Result</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1>ผลลัพธ์ของคุณ</h1>
+        <p>นี่คือการ์ดที่เหมาะกับคุณ</p>
+    </header>
+
+    <main>
+        <section class="card-section">
+            <div class="card">
+                <img id="result-card" src="" alt="Card Result">
+            </div>
+            <a href="index.html" class="button">สุ่มการ์ดใหม่</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Peaceful Death</p>
+    </footer>
+
+    <script>
+    // ดึงค่า `card` จาก URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const card = urlParams.get("card");
+
+    // ตรวจสอบว่ามีการส่งค่ามา
+    if (card) {
+        const resultCard = document.getElementById("result-card");
+        resultCard.src = `cards/${card}.png`; // ใช้ .png
+        resultCard.alt = `Card ${card}`;
+    } else {
+        alert("ไม่พบข้อมูลการ์ด กรุณากลับไปสุ่มการ์ดใหม่!");
+        window.location.href = "index.html"; // กลับไปหน้าหลัก
+    }
+</script>
+
+</body>
+</html>
